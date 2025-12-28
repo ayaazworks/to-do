@@ -26,7 +26,7 @@ function verifyJWTToken(req, res, next) {
         });
     }
 
-    jwt.verify(token, JWT_SECRET, (error, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
         if (error) {
             return res.send({
                 message: "Invalid Token, please login again",
@@ -221,7 +221,7 @@ app.post('/signup', async (req, res) => {
         const result = await collection.insertOne(userData);
         if (result) {
             // Sign the token with the user data so we can use req.user.email later
-            jwt.sign(userData, JWT_SECRET, { expiresIn: '5d' }, (error, token) => {
+            jwt.sign(userData, process.env.JWT_SECRET, { expiresIn: '5d' }, (error, token) => {
                 // Set cookie immediately upon signup
                 res.cookie('token', token, {
                     httpOnly: true, // Good for security
@@ -253,7 +253,7 @@ app.post('/login', async (req, res) => {
             // Remove password before signing if you want to be extra secure, but for now:
             const payload = { email: result.email, _id: result._id };
 
-            jwt.sign(payload,JWT_SECRET, { expiresIn: '5d' }, (error, token) => {
+            jwt.sign(payload,process.env.JWT_SECRET, { expiresIn: '5d' }, (error, token) => {
                 res.cookie('token', token, {
                     httpOnly: true,
                     secure: false, // Set to true if using HTTPS
