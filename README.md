@@ -36,18 +36,6 @@ This project goes beyond a standard To-Do app by implementing **Server-Side Pagi
 * MongoDB & Mongoose
 * JWT (JSON Web Tokens) for Auth
 
----
-
-## 📸 Screenshots
-
-*(Optional: Add screenshots of your app here to make the Readme attractive)*
-
-| Login Screen | Virtualized List |
-|:---:|:---:|
-| ![Login](https://via.placeholder.com/300x200?text=Login+Screen) | ![List](https://via.placeholder.com/300x200?text=Infinite+Scroll) |
-
----
-
 ## 🛠️ Installation & Setup
 
 Follow these steps to run the project locally.
@@ -56,3 +44,9 @@ Follow these steps to run the project locally.
 ```bash
 git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd your-repo-name
+
+make .env file and add MONGO (MONGO DB URL) and JWT_SECRET(SECRET KEY FOR JWT SIGN AND VERIFY)
+
+Run backeng with nodemon index.js
+
+Run frontend with npm run dev
