@@ -41,14 +41,14 @@ This project goes beyond a standard To-Do app by implementing **Server-Side Pagi
 Follow these steps to run the project locally.
 
 ### 1. Clone the Repository
-```bash
-git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-cd your-repo-name
 
-npm install (INSTALL DEPENDENCIES)
+bash- git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+cd your-repo-name 
 
-make .env file and add MONGO (MONGO DB URL) and JWT_SECRET(SECRET KEY FOR JWT SIGN AND VERIFY)
+bash- npm install (INSTALL DEPENDENCIES)
 
-Run backeng with nodemon index.js
+make .env file and add MONGO (MONGO DB Cluster details which has database name first-project and two collections in it todo and users) and JWT_SECRET(SECRET KEY FOR JWT SIGN AND VERIFY)
 
-Run frontend with npm run dev
+bash- npx nodemon index.js
+
+bash- npm run dev
