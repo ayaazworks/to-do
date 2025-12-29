@@ -38,10 +38,6 @@ This project goes beyond a standard To-Do app by implementing **Server-Side Pagi
 
 ## 🛠️ Installation & Setup
 
-Follow these steps to run the project locally.
-
-### 1. Clone the Repository
-
 bash- git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd your-repo-name 
 
