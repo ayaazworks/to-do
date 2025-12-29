@@ -45,6 +45,8 @@ Follow these steps to run the project locally.
 git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
 cd your-repo-name
 
+npm install (INSTALL DEPENDENCIES)
+
 make .env file and add MONGO (MONGO DB URL) and JWT_SECRET(SECRET KEY FOR JWT SIGN AND VERIFY)
 
 Run backeng with nodemon index.js
