@@ -1,58 +1,144 @@
-.task-list{
-    display: grid;
+/* --- Main Layout --- */
+.list-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* --- The Table Layout --- */
+/* We use Flexbox for both the header and the data rows to ensure alignment */
+
+/* 1. The Header Row (Sticky at top) */
+.list-header-row {
+    display: flex;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    border-radius: 4px 4px 0 0;
+    /* Remove default padding/margin issues */
+    padding-right: 15px; /* Compiles with scrollbar width usually */
+}
+
+/* 2. The Data Rows (Inside Virtuoso) */
+.virtual-row {
+    display: flex;
+    align-items: center; /* Vertically center text */
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.virtual-row:hover {
+    background-color: #f1f7ff; /* Light blue on hover */
+}
+
+/* --- Columns Configuration --- */
+/* This ensures Headers and Items share exactly the same widths */
+
+.list-header, 
+.list-item {
+    padding: 12px 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #555;
+}
+
+.list-header {
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+/* Column Width Definitions - Tweaked for your content */
+.list-header:nth-child(1), .list-item:nth-child(1) {
+    flex: 0 0 50px; /* Checkbox column */
+    text-align: center;
+}
+
+.list-header:nth-child(2), .list-item:nth-child(2) {
+    flex: 0 0 60px; /* S.No column */
+    text-align: center;
+}
+
+.list-header:nth-child(3), .list-item:nth-child(3) {
+    flex: 1; /* Title - takes remaining space */
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.list-header:nth-child(4), .list-item:nth-child(4) {
+    flex: 2; /* Description - takes double space */
+}
+
+.list-header:nth-child(5), .list-item:nth-child(5) {
+    flex: 0 0 180px; /* Action column - fixed width for buttons */
+    display: flex;
     gap: 10px;
-    list-style: none;
-    padding: 0;
-    margin: 20px;
-    grid-template-columns: 100px 50px 1fr 2fr 200px;
+    justify-content: center;
 }
-.list-header{
+
+/* --- Buttons --- */
+button {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-multiple {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
     font-weight: bold;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
+    margin-bottom: 15px;
+    display: block; /* Make sure it sits on its own line */
 }
-.list-item{
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
+
+.delete-multiple:hover {
+    background-color: #c82333;
 }
-.delete-item{
-    width: 50%;
-    padding: 6px;
-    background-color: red;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 14px;
+
+.delete-item {
+    background-color: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
 }
-.delete-item:hover{
-    background-color: #ac0909;
+
+.delete-item:hover {
+    background-color: #dc3545;
+    color: white;
 }
-.update-item{
-    width: 50%;
-    margin-left: 10px;
-    padding: 6px;
-    background-color: green;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 14px;
+
+.update-item {
+    background-color: #fff;
+    color: #28a745;
+    border: 1px solid #28a745;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
     text-decoration: none;
-    padding-left: 15px;
-    padding-right: 15px;
+    display: inline-block;
 }
-.update-item:hover{
-    background-color: rgb(0, 106, 0);
-}
-.delete-multiple{
-    width: 100px;
-    margin-left: 20px;
-    
-}
-.list-container{
-    margin-left: 20px;
-    margin-right: 20px;
+
+.update-item:hover {
+    background-color: #28a745;
+    color: white;
 }

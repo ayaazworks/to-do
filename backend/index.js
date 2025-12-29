@@ -49,10 +49,20 @@ app.get("/", (req, res) => {
 
 // 1. Get Tasks (Only for the logged-in user)
 app.get("/tasks", verifyJWTToken, async (req, res) => {
+    // 1. Get page and limit from the URL query string
+    // Default to page 0 and limit 20 if not provided
+    const page = parseInt(req.query.page) || 0;
+    const limit = parseInt(req.query.limit) || 20;
+
     const db = await connection();
     const collection = await db.collection(collectionName);
     
-    const result = await collection.find({ userEmail: req.user.email }).toArray();
+    // 2. Apply .skip() and .limit() to the MongoDB query
+    const result = await collection.find({ userEmail: req.user.email })
+        .sort({ _id: -1 }) // Optional: Sort by newest first (prevents jumping items)
+        .skip(page * limit) // Skip the items from previous pages
+        .limit(limit)       // Only grab the next 20 items
+        .toArray();
     
     if (result) {
         res.send({
